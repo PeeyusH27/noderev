@@ -3,6 +3,8 @@ const cors = require('cors')
 require('dotenv').config()
 const PORT = process.env.PORT
 
+const productsRouter = require('./products')
+
 const app = express()
 
 app.use(cors({
@@ -10,6 +12,8 @@ app.use(cors({
 }))
 
 app.use(express.json())
+
+app.use('/products', productsRouter)
 
 app.get('/', (req, res) => {
     res.send('This is coming from express backend')
